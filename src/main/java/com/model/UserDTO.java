@@ -1,34 +1,26 @@
 package com.model;
 
 import java.io.Serializable;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-/**Project: springMongo
- * File: User.java
+/**Project: springMongoDB
+ * File: UserDTO.java
  * @author jaime
  * Em 05-08-2020 **/
 
-@Document
-public class User implements Serializable {
-		
+public class UserDTO implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
-	@Id
+	
 	private String id; 
 	private String nome;
 	private String email;
 	/*
 	 * Construct
 	 */
-	public User() {}
-	/*
-	 * Construct
-	 */
-	public User(String id, String nome, String email) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.email = email;
+	public UserDTO(User obj) {
+		setId(obj.getId());
+		setNome(obj.getNome());
+		setEmail(obj.getEmail());
 	}
 	/* Getter */
 	public String getId() {
@@ -54,4 +46,5 @@ public class User implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 }
