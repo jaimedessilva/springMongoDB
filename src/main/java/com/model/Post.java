@@ -3,7 +3,6 @@ package com.model;
 import java.io.Serializable;
 import java.util.Date;
 
-
 /**Project: springMongoDB
  * File: Post.java
  * @author jaime

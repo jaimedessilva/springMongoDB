@@ -30,11 +30,7 @@ public class UserService {
 
 	//Find By Id
 	public Optional<User> findById(String id) {
-		Optional<User> user = userRepo.findById(id);
-		if (user == null) {
-			throw new ObjectNotFoundException("Ops..Objeto não encontrado");
-		}
-		return user;
+		return userRepo.findById(id);
 	}
 	// Delete
 	public void delete(String id) {

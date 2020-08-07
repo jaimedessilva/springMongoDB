@@ -10,4 +10,7 @@ import com.model.User;
  * Em 05-08-2020 **/
 
 @Repository
-public interface UserRepository extends MongoRepository<User, String>{}
+public interface UserRepository extends MongoRepository<User, String>{
+		//User findOne(String id);
+	
+}

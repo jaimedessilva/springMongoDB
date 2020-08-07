@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.model.Post;
 import com.model.User;
 import com.service.UserService;
 
@@ -50,13 +51,18 @@ public class UserController {
 		return ResponseEntity.noContent().build();
 	}
 	@PutMapping(value="/{id}")
-	public ResponseEntity<User> update (@PathVariable String id, @RequestBody User user){
+	public User update (@PathVariable String id, @RequestBody User user){
 		Optional<User> obj = service.findById(id);
-		if (!obj.isPresent()) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		if (obj == null) {
+			return null; 
 		}else {
-			user.setId(obj.get().getId());
-			return new ResponseEntity<User>(service.save(user), HttpStatus.OK);
+			return service.save(user);
 		}	
+	}
+	@GetMapping(value="/{id}/posts")
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+		Optional<User> obj = service.findById(id);
+		return null;//ResponseEntity.ok().body(obj.getPosts());
+		
 	}
 }
